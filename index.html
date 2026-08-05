@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>FARO</title>
+<meta name="theme-color" content="#060708">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- LANDING -->
+  <section class="screen active" id="screen-landing">
+    <div class="lh-wrap">
+      <svg class="lh-icon" width="70" height="90" viewBox="0 0 200 200">
+        <g class="lh-beam">
+          <polygon points="100,70 190,20 190,55" fill="#d8ab5c" opacity=".5"/>
+          <polygon points="100,70 10,20 10,55" fill="#d8ab5c" opacity=".5"/>
+        </g>
+        <rect x="88" y="55" width="24" height="20" fill="#cfd2d6"/>
+        <polygon points="80,150 120,150 112,80 88,80" fill="#cfd2d6"/>
+        <polygon points="70,150 130,150 138,172 62,172" fill="#9aa1a6"/>
+        <polygon points="100,30 118,55 82,55" fill="#cfd2d6"/>
+      </svg>
+    </div>
+    <div class="wordmark">FARO</div>
+    <div class="tagline">Cada noche, alguien es elegido.</div>
+    <div class="menu">
+      <button class="btn primary" id="nav-login">Entrar</button>
+      <button class="btn" id="nav-register">Registro</button>
+      <button class="btn ghost" id="nav-install">Instalar la app</button>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section class="screen form-screen" id="screen-login">
+    <button class="back-fab" data-back="landing" title="Volver">←</button>
+    <div class="form-body">
+      <div class="form-title">Entrar</div>
+      <div class="form-sub">Identifícate para ver si el faro te ilumina esta noche.</div>
+      <div class="field"><label>Usuario</label><input id="login-user" autocomplete="username"></div>
+      <div class="field"><label>Contraseña</label><input id="login-pass" type="password" autocomplete="current-password"></div>
+      <button class="btn primary" id="login-submit">Entrar al faro</button>
+      <div class="error-msg" id="login-error" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section class="screen form-screen" id="screen-register">
+    <button class="back-fab" data-back="landing" title="Volver">←</button>
+    <div class="form-body">
+      <div class="form-title">Registro</div>
+      <div class="form-sub">Únete al faro. Solo familia y gente de confianza.</div>
+      <div class="field"><label>Usuario</label><input id="reg-user"></div>
+      <div class="field"><label>Contraseña</label><input id="reg-pass" type="password"></div>
+      <div class="field"><label>Repite la contraseña</label><input id="reg-pass2" type="password"></div>
+      <div class="field"><label>Nombre y apellidos</label><input id="reg-name"></div>
+      <div class="field"><label>¿Quién eres en la familia?</label><input id="reg-family" placeholder="p. ej. hermano, prima, tío..."></div>
+      <button class="btn primary" id="register-submit">Crear cuenta</button>
+      <div class="error-msg" id="register-error" style="display:none;"></div>
+      <div class="success-msg" id="register-success" style="display:none;"></div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="screen form-screen" id="screen-install">
+    <button class="back-fab" data-back="landing" title="Volver">←</button>
+    <div class="form-body">
+      <div class="form-title">Instalar</div>
+      <div class="form-sub">Añade FARO a tu pantalla de inicio, como una app.</div>
+      <div class="tabs">
+        <div class="tab active" id="tab-ios">iOS</div>
+        <div class="tab" id="tab-android">Android</div>
+      </div>
+      <div class="video-mock">
+        <div class="play">▶</div>
+        <div class="cap" id="install-cap">Vídeo: Safari → Compartir → "Añadir a pantalla de inicio"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APAGADO -->
+  <section class="screen" id="screen-apagado">
+    <button class="back-fab" data-back="landing" title="Salir">←</button>
+    <svg class="lh-icon" width="90" height="115" viewBox="0 0 200 200">
+      <rect x="88" y="55" width="24" height="20" fill="#3a3e44"/>
+      <polygon points="80,150 120,150 112,80 88,80" fill="#3a3e44"/>
+      <polygon points="70,150 130,150 138,172 62,172" fill="#26282c"/>
+      <polygon points="100,30 118,55 82,55" fill="#3a3e44"/>
+    </svg>
+    <div class="wordmark" style="font-size:16px; margin-top:16px;">FARO</div>
+    <div class="status-line">El faro está apagado</div>
+    <div class="sub">Cada noche a las 22:00,<br>el faro se enciende.</div>
+    <div class="apagada-tag">apagada</div>
+    <div class="bell-row">🔔 &nbsp; Te avisaremos cuando el faro se encienda</div>
+  </section>
+
+  <!-- DADO -->
+  <section class="screen" id="screen-dado">
+    <button class="back-fab" data-back="apagado" title="Volver">←</button>
+    <div class="confetti-wrap" id="confetti-wrap"></div>
+    <div class="dado-label" id="dado-label">21:50 — El faro elige a alguien</div>
+    <div class="die" id="die">?</div>
+    <div class="result-name" id="dado-result" style="display:none;"></div>
+    <div class="sub" id="dado-sub" style="display:none; max-width:260px;"></div>
+  </section>
+
+  <!-- ESPERANDO -->
+  <section class="screen" id="screen-esperando">
+    <button class="back-fab" data-back="dado" title="Volver">←</button>
+    <div class="wordmark" style="font-size:15px; text-align:left; padding-left:24px; padding-top:24px;">FARO</div>
+    <div class="card" style="margin:70px 24px 0;">
+      <div class="card-title" id="esperando-title">Esta noche, el faro ha iluminado a alguien.</div>
+      <div class="card-sub">Está escribiendo su mensaje. Aparecerá aquí en cuanto lo termine, o cuando pase la hora.</div>
+      <div class="timer"><span class="waiting-dot">●</span> escribiendo</div>
+    </div>
+  </section>
+
+  <!-- ESCRIBIENDO -->
+  <section class="screen" id="screen-escribiendo">
+    <button class="back-fab" data-back="dado" title="Volver">←</button>
+    <div class="wordmark" style="font-size:15px; text-align:left;">FARO</div>
+    <div class="card">
+      <div class="card-title">Esta noche, el faro te ha iluminado.</div>
+      <div class="card-sub">Tienes 1 hora para escribir lo que quieras dejar a los demás.</div>
+      <div class="timer" id="write-timer">⏱ 1:00:00</div>
+    </div>
+    <div class="cat-row">
+      <div class="cat-pill active" data-cat="historia">Historia</div>
+      <div class="cat-pill" data-cat="recuerdo">Recuerdo</div>
+      <div class="cat-pill" data-cat="consejo">Consejo</div>
+    </div>
+    <div class="field">
+      <textarea id="write-text" placeholder="Escribe aquí lo que quieras dejar esta noche..."></textarea>
+    </div>
+    <button class="btn primary" id="write-submit">Encender el faro</button>
+    <div class="error-msg" id="write-error" style="display:none;"></div>
+  </section>
+
+  <!-- SIN MENSAJE -->
+  <section class="screen" id="screen-sinmensaje">
+    <button class="back-fab" data-back="apagado" title="Volver">←</button>
+    <svg class="lh-icon" width="60" height="76" viewBox="0 0 200 200">
+      <rect x="88" y="55" width="24" height="20" fill="#3a3e44"/>
+      <polygon points="80,150 120,150 112,80 88,80" fill="#3a3e44"/>
+      <polygon points="70,150 130,150 138,172 62,172" fill="#26282c"/>
+      <polygon points="100,30 118,55 82,55" fill="#3a3e44"/>
+    </svg>
+    <div class="t1">Esta noche</div>
+    <div class="t2">El faro se apagó sin dejar ningún mensaje.</div>
+  </section>
+
+  
