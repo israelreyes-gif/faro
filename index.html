@@ -156,4 +156,34 @@
     <div class="t2">El faro se apagó sin dejar ningún mensaje.</div>
   </section>
 
-  
+  <!-- MENSAJE DIFUNDIDO -->
+  <section class="screen" id="screen-mensaje">
+    <button class="back-fab" data-back="apagado" title="Volver">←</button>
+    <div class="broadcast-eyebrow">Esta noche el faro ha iluminado a</div>
+    <div class="broadcast-who">
+      <div class="name" id="msg-name">—</div>
+      <div class="role" id="msg-role">—</div>
+    </div>
+    <div class="broadcast-visual">
+      <div class="broadcast-tag"><span class="dot"></span> escrito esta noche</div>
+      <div class="broadcast-cat" id="msg-cat">HISTORIA</div>
+      <div>
+        <div class="broadcast-text" id="msg-text">—</div>
+        <div class="broadcast-sign">— desde algún lugar del mundo</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="debug-box" style="position:fixed; bottom:0; left:0; right:0; background:#300; color:#fff; font-size:11px; padding:10px; z-index:9999; display:none; white-space:pre-wrap;"></div>
+<script>
+  window.addEventListener('error', e => {
+    const box = document.getElementById('debug-box');
+    box.style.display = 'block';
+    box.textContent = 'ERROR: ' + e.message + ' (' + e.filename + ':' + e.lineno + ')';
+  });
+</script>
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
