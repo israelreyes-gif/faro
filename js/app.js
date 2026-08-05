@@ -1,4 +1,4 @@
-import { api, getToken, getSession, clearToken } from './api.js';
+import { api, getToken, getSession, clearToken, clearSession } from './api.js';
 import { initAuthForms } from './auth.js';
 import { iniciarGiroVisual, mostrarResultado } from './dado.js';
 import { initEscritura, iniciarCuentaAtras, pintarMensajeDifundido } from './mensaje.js';
@@ -18,14 +18,21 @@ export function go(nombre) {
   document.getElementById(`screen-${nombre}`)?.classList.add('active');
 }
 
+function cerrarSesion() {
+  clearInterval(pollTimer);
+  clearToken();
+  clearSession();
+  faseAnterior = null;
+  go('landing');
+}
+
 function bindBackButtons() {
   document.querySelectorAll('[data-back]').forEach(btn => {
-    btn.addEventListener('click', () => go(btn.dataset.back));
+    btn.addEventListener('click', () => {
+      if (btn.dataset.back === 'logout') cerrarSesion();
+      else go(btn.dataset.back);
+    });
   });
-  document.getElementById('nav-login')?.addEventListener('click', () => go('login'));
-  document.getElementById('nav-register')?.addEventListener('click', () => go('register'));
-  document.getElementById('nav-install')?.addEventListener('click', () => go('install'));
-}
 
 function bindInstallTabs() {
   document.getElementById('tab-ios')?.addEventListener('click', () => setInstallTab('ios'));
