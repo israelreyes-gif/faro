@@ -14,6 +14,10 @@ export function clearToken() {
   localStorage.removeItem(TOKEN_KEY);
 }
 
+export function clearSession() {
+  localStorage.removeItem('faro_session');
+}
+
 export function getSession() {
   const raw = localStorage.getItem('faro_session');
   return raw ? JSON.parse(raw) : null;
