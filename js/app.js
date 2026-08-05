@@ -33,6 +33,7 @@ function bindBackButtons() {
       else go(btn.dataset.back);
     });
   });
+}
 
 function bindInstallTabs() {
   document.getElementById('tab-ios')?.addEventListener('click', () => setInstallTab('ios'));
