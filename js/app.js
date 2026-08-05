@@ -33,6 +33,9 @@ function bindBackButtons() {
       else go(btn.dataset.back);
     });
   });
+  document.getElementById('nav-login')?.addEventListener('click', () => go('login'));
+  document.getElementById('nav-register')?.addEventListener('click', () => go('register'));
+  document.getElementById('nav-install')?.addEventListener('click', () => go('install'));
 }
 
 function bindInstallTabs() {
