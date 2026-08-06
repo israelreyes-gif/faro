@@ -65,9 +65,8 @@ function bindInstallTabs() {
 function setInstallTab(which) {
   document.getElementById('tab-ios').classList.toggle('active', which === 'ios');
   document.getElementById('tab-android').classList.toggle('active', which === 'android');
-  document.getElementById('install-cap').textContent = which === 'ios'
-    ? 'Vídeo: Safari → Compartir → "Añadir a pantalla de inicio"'
-    : 'Vídeo: Chrome → Menú ⋮ → "Instalar app"';
+  document.getElementById('steps-ios').style.display = which === 'ios' ? 'flex' : 'none';
+  document.getElementById('steps-android').style.display = which === 'android' ? 'flex' : 'none';
 }
 
 async function refrescarEstado() {
