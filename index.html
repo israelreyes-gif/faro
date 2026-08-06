@@ -62,6 +62,7 @@
       <div class="field"><label>Repite la contraseña</label><input id="reg-pass2" type="password"></div>
       <div class="field"><label>Nombre y apellidos</label><input id="reg-name"></div>
       <div class="field"><label>¿Quién eres en la familia?</label><input id="reg-family" placeholder="p. ej. hermano, prima, tío..."></div>
+      <div class="field"><label>Fecha de nacimiento</label><input id="reg-birthdate" type="date"></div>
       <button class="btn primary" id="register-submit">Crear cuenta</button>
       <div class="error-msg" id="register-error" style="display:none;"></div>
       <div class="success-msg" id="register-success" style="display:none;"></div>
@@ -184,6 +185,6 @@
     box.textContent = 'ERROR: ' + e.message + ' (' + e.filename + ':' + e.lineno + ')';
   });
 </script>
-<script type="module" src="./js/app.js"></script>
+<script type="module" src="./js/app.js" crossorigin="anonymous"></script>
 </body>
 </html>
