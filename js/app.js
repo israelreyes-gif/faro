@@ -1,5 +1,3 @@
-window.__faroLoaded = true;
-
 import { api, getToken, getSession, clearToken, clearSession } from './api.js';
 import { initAuthForms } from './auth.js';
 import { iniciarGiroVisual, mostrarResultado } from './dado.js';
@@ -38,7 +36,6 @@ function bindBackButtons() {
   document.getElementById('nav-login')?.addEventListener('click', () => go('login'));
   document.getElementById('nav-register')?.addEventListener('click', () => go('register'));
   document.getElementById('nav-install')?.addEventListener('click', () => go('install'));
-  window.__faroBindDone = true;
 }
 
 function bindInstallTabs() {
