@@ -32,7 +32,7 @@
     <div class="wordmark">FARO</div>
     <div class="tagline">Cada noche, alguien es elegido.</div>
     <div class="menu">
-      <button class="btn primary" id="nav-login" onclick="alert('el clic sí llega')">Entrar</button>
+      <button class="btn primary" id="nav-login">Entrar</button>
       <button class="btn" id="nav-register">Registro</button>
       <button class="btn ghost" id="nav-install">Instalar la app</button>
     </div>
@@ -177,29 +177,6 @@
 
 </div>
 
-<div id="debug-box" style="position:fixed; bottom:0; left:0; right:0; background:#300; color:#fff; font-size:11px; padding:10px; z-index:9999; display:none; white-space:pre-wrap;"></div>
-<script>
-  function mostrarDebug(msg) {
-    const box = document.getElementById('debug-box');
-    box.style.display = 'block';
-    box.textContent += msg + '\n';
-  }
-  window.addEventListener('error', e => {
-    mostrarDebug('ERROR: ' + e.message + ' (' + e.filename + ':' + e.lineno + ')');
-  });
-  window.addEventListener('unhandledrejection', e => {
-    mostrarDebug('PROMESA RECHAZADA: ' + (e.reason?.message || e.reason));
-  });
-  setTimeout(() => {
-    if (!window.__faroLoaded) {
-      mostrarDebug('AVISO: app.js no llegó a ejecutarse en 2 segundos (revisa si algún import falló al cargar).');
-    } else if (!window.__faroBindDone) {
-      mostrarDebug('AVISO: app.js se ejecutó pero bindBackButtons no terminó.');
-    } else {
-      mostrarDebug('OK: app.js se ejecutó y los botones se enlazaron correctamente.');
-    }
-  }, 2000);
-</script>
 <script type="module" src="./js/app.js" crossorigin="anonymous"></script>
 </body>
 </html>
