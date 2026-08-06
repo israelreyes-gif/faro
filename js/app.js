@@ -18,6 +18,25 @@ export function go(nombre) {
   document.getElementById(`screen-${nombre}`)?.classList.add('active');
 }
 
+function esModoPWA() {
+  const iosStandalone = window.navigator.standalone === true;
+  const displayModeStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  return iosStandalone || displayModeStandalone;
+}
+
+function mostrarMenuSegunModo() {
+  const menuPwa = document.getElementById('menu-pwa');
+  const menuBrowser = document.getElementById('menu-browser');
+
+  if (esModoPWA()) {
+    menuPwa.style.display = 'flex';
+    menuBrowser.style.display = 'none';
+  } else {
+    menuPwa.style.display = 'none';
+    menuBrowser.style.display = 'flex';
+  }
+}
+
 function cerrarSesion() {
   clearInterval(pollTimer);
   clearToken();
@@ -35,7 +54,7 @@ function bindBackButtons() {
   });
   document.getElementById('nav-login')?.addEventListener('click', () => go('login'));
   document.getElementById('nav-register')?.addEventListener('click', () => go('register'));
-  document.getElementById('nav-install')?.addEventListener('click', () => go('install'));
+  document.getElementById('nav-install-browser')?.addEventListener('click', () => go('install'));
 }
 
 function bindInstallTabs() {
@@ -136,6 +155,7 @@ document.addEventListener('faro:mensaje-enviado', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   registrarServiceWorker();
+  mostrarMenuSegunModo();
   bindBackButtons();
   bindInstallTabs();
   initEscritura();
