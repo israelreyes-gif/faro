@@ -36,7 +36,6 @@ export function initAuthForms(onLoggedIn) {
       password: document.getElementById('reg-pass').value,
       password2: document.getElementById('reg-pass2').value,
       nombre: document.getElementById('reg-name').value.trim(),
-      familia: document.getElementById('reg-family').value.trim(),
       fechaNacimiento: document.getElementById('reg-birthdate').value || null
     };
     regError.style.display = 'none';
