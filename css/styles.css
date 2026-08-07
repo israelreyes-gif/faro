@@ -86,7 +86,7 @@ html, body{
 .back-fab:hover{ color:var(--ink); border-color:rgba(255,255,255,.3); }
 
 /* fondos de video reales del faro */
-.bg-video-wrap{ position:absolute; inset:0; z-index:0; overflow:hidden; }
+.bg-video-wrap{ position:fixed; inset:0; z-index:0; overflow:hidden; }
 .bg-video-wrap video{ width:100%; height:100%; object-fit:cover; display:block; }
 .bg-video-overlay{
   position:absolute; inset:0; z-index:1;
@@ -154,7 +154,7 @@ html, body{
 /* dado */
 #screen-dado{ align-items:center; justify-content:center; gap:16px; padding:0 30px; text-align:center; }
 #screen-dado > *:not(.bg-video-wrap):not(.confetti-wrap){ position:relative; z-index:2; }
-.confetti-wrap{ z-index:3; }
+.confetti-wrap{ position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:3; }
 #screen-dado .dado-label{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-dim); }
 .die{ width:120px; height:120px; border:1px solid var(--gold); border-radius:20px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond', serif; font-size:52px; color:var(--gold-soft); background:radial-gradient(circle at 30% 20%, #1a1408, #060708 70%); }
 .die.spinning{ animation:spin-die .18s linear infinite; }
