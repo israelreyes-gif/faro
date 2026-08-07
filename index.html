@@ -222,17 +222,30 @@
   <!-- MENSAJE DIFUNDIDO -->
   <section class="screen" id="screen-mensaje">
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
-    <div class="broadcast-eyebrow">Esta noche el faro ha iluminado a</div>
-    <div class="broadcast-who">
-      <div class="name" id="msg-name">—</div>
-    </div>
-    <div class="broadcast-visual">
-      <div class="broadcast-tag"><span class="dot"></span> escrito esta noche</div>
-      <div class="broadcast-cat" id="msg-cat">HISTORIA</div>
-      <div>
-        <div class="broadcast-text" id="msg-text">—</div>
-        <div class="broadcast-sign">— desde algún lugar del mundo</div>
+    <div class="broadcast-content">
+      <div class="broadcast-eyebrow">Esta noche el faro ha iluminado a</div>
+      <div class="broadcast-who">
+        <div class="name" id="msg-name">—</div>
       </div>
+
+      <svg class="lh-lit" width="72" height="92" viewBox="0 0 200 200">
+        <g class="lh-beam-lit">
+          <polygon points="100,70 195,15 195,55" fill="#e8cb98" opacity=".55"/>
+          <polygon points="100,70 5,15 5,55" fill="#e8cb98" opacity=".55"/>
+        </g>
+        <rect x="88" y="55" width="24" height="20" fill="#e8cb98" class="lh-glow"/>
+        <polygon points="80,150 120,150 112,80 88,80" fill="#cfd2d6"/>
+        <polygon points="70,150 130,150 138,172 62,172" fill="#9aa1a6"/>
+        <polygon points="100,30 118,55 82,55" fill="#e8cb98" class="lh-glow"/>
+      </svg>
+
+      <div class="broadcast-meta">
+        <div class="broadcast-tag"><span class="dot"></span> escrito esta noche</div>
+        <div class="broadcast-cat" id="msg-cat">HISTORIA</div>
+      </div>
+
+      <div class="broadcast-text" id="msg-text">—</div>
+      <div class="broadcast-sign">— desde algún lugar del mundo</div>
     </div>
   </section>
 
