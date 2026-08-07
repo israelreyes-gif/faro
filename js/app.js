@@ -82,9 +82,52 @@ function setInstallTab(which) {
   document.getElementById('steps-android').style.display = which === 'android' ? 'flex' : 'none';
 }
 
+// ---------------------------------------------------------------
+// Vídeos de fondo y etiquetas narrativas del "estado del faro"
+// ---------------------------------------------------------------
+function setVideoSrc(videoEl, ruta) {
+  if (!videoEl) return;
+  if (videoEl.getAttribute('src') === ruta) return;
+  videoEl.setAttribute('src', ruta);
+  videoEl.load();
+  videoEl.play().catch(() => {});
+}
+
+function actualizarEstadoApagado() {
+  const video = document.getElementById('bg-video-apagado');
+  const tag = document.getElementById('estado-tag-apagado');
+  if (!video || !tag) return;
+
+  const hora = new Date().getHours();
+  const esAtardecer = hora >= 20; // 20:00–21:49 aprox., dentro de la fase "apagado"
+
+  setVideoSrc(video, esAtardecer ? './video/atardecer.mp4' : './video/dia.mp4');
+  tag.innerHTML = esAtardecer
+    ? '<span class="estado-icon">🌇</span><span>El faro despierta</span>'
+    : '<span class="estado-icon">🌅</span><span>El faro descansa</span>';
+}
+
+function actualizarEstadoDado(fase) {
+  const video = document.getElementById('bg-video-dado');
+  const tag = document.getElementById('estado-tag-dado');
+  if (!video || !tag) return;
+
+  if (fase === 'girando') {
+    setVideoSrc(video, './video/buscando.mp4');
+    tag.innerHTML = '<span class="estado-icon">🔦</span><span>El faro está buscando…</span>';
+  } else {
+    setVideoSrc(video, './video/encontrado.mp4');
+    tag.innerHTML = '<span class="estado-icon">✨</span><span>La luz ha encontrado a alguien</span>';
+  }
+}
+
 async function refrescarEstado() {
   const session = getSession();
   if (!session) return;
+
+  if (document.getElementById('screen-apagado')?.classList.contains('active')) {
+    actualizarEstadoApagado();
+  }
 
   try {
     const estado = await api.estado();
@@ -103,16 +146,19 @@ function aplicarFase(estado) {
 
   switch (estado.fase) {
     case 'apagado':
+      actualizarEstadoApagado();
       go('apagado');
       break;
 
     case 'girando':
+      actualizarEstadoDado('girando');
       go('dado');
       iniciarGiroVisual(estado.totalUsuarios);
       break;
 
     case 'elegido': {
       const esGanador = estado.ganador?.id === session.id;
+      actualizarEstadoDado('elegido');
       go('dado');
       mostrarResultado({ esGanador, ganador: estado.ganador, numero: estado.numeroElegido });
       break;
@@ -146,6 +192,7 @@ function aplicarFase(estado) {
 }
 
 function onLoggedIn() {
+  actualizarEstadoApagado();
   go('apagado');
   faseAnterior = null;
   refrescarEstado();
