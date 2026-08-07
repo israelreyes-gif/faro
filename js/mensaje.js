@@ -68,7 +68,6 @@ async function enviarMensaje() {
 }
 
 export function pintarMensajeDifundido(mensaje) {
-  document.getElementById('msg-name').textContent = mensaje.nombre;
   document.getElementById('msg-cat').textContent = mensaje.categoria.toUpperCase();
   document.getElementById('msg-text').textContent = mensaje.texto;
 }
