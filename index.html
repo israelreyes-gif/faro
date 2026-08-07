@@ -155,13 +155,12 @@
 
   <!-- APAGADO -->
   <section class="screen" id="screen-apagado">
+    <div class="bg-video-wrap">
+      <video id="bg-video-apagado" autoplay loop muted playsinline></video>
+      <div class="bg-video-overlay"></div>
+    </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
-    <svg class="lh-icon" width="90" height="115" viewBox="0 0 200 200">
-      <rect x="88" y="55" width="24" height="20" fill="#3a3e44"/>
-      <polygon points="80,150 120,150 112,80 88,80" fill="#3a3e44"/>
-      <polygon points="70,150 130,150 138,172 62,172" fill="#26282c"/>
-      <polygon points="100,30 118,55 82,55" fill="#3a3e44"/>
-    </svg>
+    <div class="estado-tag" id="estado-tag-apagado"><span class="estado-icon">🌅</span><span>El faro descansa</span></div>
     <div class="wordmark" style="font-size:16px; margin-top:16px;">FARO</div>
     <div class="status-line">El faro está apagado</div>
     <div class="sub">Cada noche a las 22:00,<br>el faro se enciende.</div>
@@ -171,8 +170,13 @@
 
   <!-- DADO -->
   <section class="screen" id="screen-dado">
+    <div class="bg-video-wrap">
+      <video id="bg-video-dado" autoplay loop muted playsinline></video>
+      <div class="bg-video-overlay"></div>
+    </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
     <div class="confetti-wrap" id="confetti-wrap"></div>
+    <div class="estado-tag" id="estado-tag-dado"><span class="estado-icon">🔦</span><span>El faro está buscando…</span></div>
     <div class="dado-label" id="dado-label">El faro está eligiendo a alguien esta noche.</div>
     <div class="die" id="die">?</div>
     <div class="result-name" id="dado-result" style="display:none;"></div>
@@ -181,7 +185,12 @@
 
   <!-- ESPERANDO -->
   <section class="screen" id="screen-esperando">
+    <div class="bg-video-wrap">
+      <video id="bg-video-esperando" autoplay loop muted playsinline src="./video/encontrado.mp4"></video>
+      <div class="bg-video-overlay"></div>
+    </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
+    <div class="estado-tag"><span class="estado-icon">🕯️</span><span>El faro sigue encendido</span></div>
     <div class="wordmark" style="font-size:15px; text-align:left; padding-left:24px; padding-top:24px;">FARO</div>
     <div class="card" style="margin:70px 24px 0;">
       <div class="card-title" id="esperando-title">Esta noche, el faro ha iluminado a alguien.</div>
@@ -192,12 +201,18 @@
 
   <!-- ESCRIBIENDO -->
   <section class="screen" id="screen-escribiendo">
+    <div class="bg-video-wrap">
+      <video id="bg-video-escribiendo" autoplay loop muted playsinline src="./video/encontrado.mp4"></video>
+      <div class="bg-video-overlay"></div>
+    </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
+    <div class="estado-tag"><span class="estado-icon">🕯️</span><span>El faro sigue encendido</span></div>
     <div class="wordmark" style="font-size:15px; text-align:left;">FARO</div>
     <div class="card">
       <div class="card-title">Esta noche, el faro te ha iluminado.</div>
       <div class="card-sub">Tienes 1 hora para escribir lo que quieras dejar a los demás.</div>
-      <div class="timer" id="write-timer">⏱ 1:00:00</div>
+      <div class="beam-progress"><div class="beam-progress-fill" id="write-progress-fill" style="width:100%;"></div></div>
+      <div class="progress-label" id="write-progress-label">queda 1 hora</div>
     </div>
     <div class="cat-row">
       <div class="cat-pill active" data-cat="historia">Historia</div>
@@ -226,23 +241,16 @@
 
   <!-- MENSAJE DIFUNDIDO -->
   <section class="screen" id="screen-mensaje">
+    <div class="bg-video-wrap">
+      <video id="bg-video-mensaje" autoplay loop muted playsinline src="./video/mensaje.mp4"></video>
+      <div class="bg-video-overlay"></div>
+    </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
     <div class="broadcast-content">
       <div class="broadcast-eyebrow">Esta noche el faro ha iluminado a</div>
       <div class="broadcast-who">
         <div class="name" id="msg-name">—</div>
       </div>
-
-      <svg class="lh-lit" width="72" height="92" viewBox="0 0 200 200">
-        <g class="lh-beam-lit">
-          <polygon points="100,70 195,15 195,55" fill="#e8cb98" opacity=".55"/>
-          <polygon points="100,70 5,15 5,55" fill="#e8cb98" opacity=".55"/>
-        </g>
-        <rect x="88" y="55" width="24" height="20" fill="#e8cb98" class="lh-glow"/>
-        <polygon points="80,150 120,150 112,80 88,80" fill="#cfd2d6"/>
-        <polygon points="70,150 130,150 138,172 62,172" fill="#9aa1a6"/>
-        <polygon points="100,30 118,55 82,55" fill="#e8cb98" class="lh-glow"/>
-      </svg>
 
       <div class="broadcast-meta">
         <div class="broadcast-tag"><span class="dot"></span> escrito esta noche</div>
