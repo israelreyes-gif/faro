@@ -14,7 +14,7 @@ export function detenerGiroVisual() {
   document.getElementById('die').classList.remove('spinning');
 }
 
-export function mostrarResultado({ esGanador, ganador, numero }) {
+export function mostrarResultado({ esGanador, numero }) {
   detenerGiroVisual();
   const die = document.getElementById('die');
   const result = document.getElementById('dado-result');
@@ -29,7 +29,7 @@ export function mostrarResultado({ esGanador, ganador, numero }) {
     sub.style.display = 'none';
     lanzarConfeti();
   } else {
-    result.textContent = `El faro ha iluminado a ${ganador.nombre}`;
+    result.textContent = `El faro ha iluminado al número ${numero}`;
     result.classList.add('no-agraciado');
     sub.textContent = 'Tú, esta noche, solo puedes esperar a que escriba.';
     sub.style.display = 'block';
