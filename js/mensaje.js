@@ -17,7 +17,9 @@ export function initEscritura() {
 
 export function iniciarCuentaAtras(segundosRestantes, onExpirar) {
   clearInterval(temporizador);
-  const el = document.getElementById('write-timer');
+  const fill = document.getElementById('write-progress-fill');
+  const label = document.getElementById('write-progress-label');
+  const segundosTotal = Math.max(segundosRestantes, 1);
 
   const tick = () => {
     if (segundosRestantes <= 0) {
@@ -25,15 +27,23 @@ export function iniciarCuentaAtras(segundosRestantes, onExpirar) {
       onExpirar();
       return;
     }
-    const h = Math.floor(segundosRestantes / 3600);
-    const m = Math.floor((segundosRestantes % 3600) / 60);
-    const s = segundosRestantes % 60;
-    el.textContent = `⏱ ${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+    const porcentaje = Math.max(0, Math.min(100, (segundosRestantes / segundosTotal) * 100));
+    fill.style.width = porcentaje + '%';
+    label.textContent = textoRestante(segundosRestantes);
+
     segundosRestantes--;
   };
 
   tick();
   temporizador = setInterval(tick, 1000);
+}
+
+function textoRestante(segundos) {
+  const minutos = Math.ceil(segundos / 60);
+  if (minutos >= 60) return 'queda 1 hora';
+  if (minutos <= 1) return 'queda menos de 1 minuto';
+  return `quedan ${minutos} minutos`;
 }
 
 async function enviarMensaje() {
