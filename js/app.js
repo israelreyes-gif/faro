@@ -62,6 +62,19 @@ function bindInstallTabs() {
   document.getElementById('tab-android')?.addEventListener('click', () => setInstallTab('android'));
 }
 
+function bindSoundToggle() {
+  const video = document.getElementById('intro-video');
+  const btn = document.getElementById('sound-toggle');
+  if (!video || !btn) return;
+
+  btn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? '🔇' : '🔊';
+    btn.title = video.muted ? 'Activar sonido' : 'Silenciar';
+    if (!video.muted) video.play().catch(() => {});
+  });
+}
+
 function setInstallTab(which) {
   document.getElementById('tab-ios').classList.toggle('active', which === 'ios');
   document.getElementById('tab-android').classList.toggle('active', which === 'android');
@@ -157,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mostrarMenuSegunModo();
   bindBackButtons();
   bindInstallTabs();
+  bindSoundToggle();
   initEscritura();
   initAuthForms(onLoggedIn);
   initSesionExistente();
