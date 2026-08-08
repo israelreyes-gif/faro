@@ -16,6 +16,19 @@ let faseAnterior = null;
 export function go(nombre) {
   SCREENS.forEach(s => document.getElementById(`screen-${s}`)?.classList.remove('active'));
   document.getElementById(`screen-${nombre}`)?.classList.add('active');
+  gestionarVideoIntro(nombre);
+}
+
+function gestionarVideoIntro(nombre) {
+  const video = document.getElementById('intro-video');
+  if (!video) return;
+
+  if (nombre === 'install') {
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
 }
 
 function esModoPWA() {
@@ -83,7 +96,7 @@ function setInstallTab(which) {
 }
 
 // ---------------------------------------------------------------
-// Vídeos de fondo según el "estado del faro"
+// Vídeos de fondo y etiquetas narrativas del "estado del faro"
 // ---------------------------------------------------------------
 function setVideoSrc(videoEl, ruta) {
   if (!videoEl) return;
