@@ -1,17 +1,15 @@
 import { api, setToken, setSession } from './api.js';
+import { mostrarToast } from './toast.js';
 
 export function initAuthForms(onLoggedIn) {
   const loginBtn = document.getElementById('login-submit');
-  const loginError = document.getElementById('login-error');
 
   loginBtn.addEventListener('click', async () => {
     const username = document.getElementById('login-user').value.trim();
     const password = document.getElementById('login-pass').value;
-    loginError.style.display = 'none';
 
     if (!username || !password) {
-      loginError.textContent = 'Escribe tu usuario y tu contraseña.';
-      loginError.style.display = 'block';
+      mostrarToast('error', 'Faltan datos', 'Escribe tu usuario y tu contraseña.');
       return;
     }
 
@@ -21,14 +19,11 @@ export function initAuthForms(onLoggedIn) {
       setSession(user);
       onLoggedIn(user);
     } catch (err) {
-      loginError.textContent = 'El acceso no es correcto. El faro no puede iluminarte.';
-      loginError.style.display = 'block';
+      mostrarToast('error', 'No se pudo iniciar sesión', 'El acceso no es correcto. El faro no puede iluminarte.');
     }
   });
 
   const regBtn = document.getElementById('register-submit');
-  const regError = document.getElementById('register-error');
-  const regSuccess = document.getElementById('register-success');
 
   regBtn.addEventListener('click', async () => {
     const payload = {
@@ -38,29 +33,24 @@ export function initAuthForms(onLoggedIn) {
       nombre: document.getElementById('reg-name').value.trim(),
       fechaNacimiento: document.getElementById('reg-birthdate').value || null
     };
-    regError.style.display = 'none';
-    regSuccess.style.display = 'none';
 
     if (!payload.username || !payload.password || !payload.nombre) {
-      regError.textContent = 'Rellena al menos usuario, contraseña y nombre.';
-      regError.style.display = 'block';
+      mostrarToast('error', 'Faltan datos', 'Rellena al menos usuario, contraseña y nombre.');
       return;
     }
     if (payload.password !== payload.password2) {
-      regError.textContent = 'Las contraseñas no coinciden.';
-      regError.style.display = 'block';
+      mostrarToast('error', 'Las contraseñas no coinciden', 'Revisa que las dos contraseñas sean iguales.');
       return;
     }
 
     try {
       await api.register(payload);
-      regSuccess.style.display = 'block';
-      regSuccess.textContent = 'Ya formas parte del faro. Espera a que anochezca.';
+      mostrarToast('success', 'Cuenta creada', 'Ya formas parte del faro. Espera a que anochezca.');
     } catch (err) {
-      regError.textContent = err.status === 409
+      const mensaje = err.status === 409
         ? 'Ese usuario ya existe en el faro.'
         : (err.message || 'No se pudo completar el registro.');
-      regError.style.display = 'block';
+      mostrarToast('error', 'No se pudo completar el registro', mensaje);
     }
   });
 }
