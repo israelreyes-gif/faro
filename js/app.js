@@ -83,7 +83,7 @@ function setInstallTab(which) {
 }
 
 // ---------------------------------------------------------------
-// Vídeos de fondo y etiquetas narrativas del "estado del faro"
+// Vídeos de fondo según el "estado del faro"
 // ---------------------------------------------------------------
 function setVideoSrc(videoEl, ruta) {
   if (!videoEl) return;
@@ -95,30 +95,19 @@ function setVideoSrc(videoEl, ruta) {
 
 function actualizarEstadoApagado() {
   const video = document.getElementById('bg-video-apagado');
-  const tag = document.getElementById('estado-tag-apagado');
-  if (!video || !tag) return;
+  if (!video) return;
 
   const hora = new Date().getHours();
   const esAtardecer = hora >= 20; // 20:00–21:49 aprox., dentro de la fase "apagado"
 
   setVideoSrc(video, esAtardecer ? './video/atardecer.mp4' : './video/dia.mp4');
-  tag.innerHTML = esAtardecer
-    ? '<span class="estado-icon">🌇</span><span>El faro despierta</span>'
-    : '<span class="estado-icon">🌅</span><span>El faro descansa</span>';
 }
 
 function actualizarEstadoDado(fase) {
   const video = document.getElementById('bg-video-dado');
-  const tag = document.getElementById('estado-tag-dado');
-  if (!video || !tag) return;
+  if (!video) return;
 
-  if (fase === 'girando') {
-    setVideoSrc(video, './video/buscando.mp4');
-    tag.innerHTML = '<span class="estado-icon">🔦</span><span>El faro está buscando…</span>';
-  } else {
-    setVideoSrc(video, './video/encontrado.mp4');
-    tag.innerHTML = '<span class="estado-icon">✨</span><span>La luz ha encontrado a alguien</span>';
-  }
+  setVideoSrc(video, fase === 'girando' ? './video/buscando.mp4' : './video/encontrado.mp4');
 }
 
 async function refrescarEstado() {
