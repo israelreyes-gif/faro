@@ -160,7 +160,7 @@ function aplicarFase(estado) {
       const esGanador = estado.ganador?.id === session.id;
       actualizarEstadoDado('elegido');
       go('dado');
-      mostrarResultado({ esGanador, ganador: estado.ganador, numero: estado.numeroElegido });
+      mostrarResultado({ esGanador, numero: estado.numeroElegido });
       break;
     }
 
@@ -174,7 +174,7 @@ function aplicarFase(estado) {
         });
       } else {
         document.getElementById('esperando-title').textContent =
-          `Esta noche, el faro ha iluminado a ${estado.ganador.nombre}.`;
+          `Esta noche, el faro ha iluminado al número ${estado.numeroElegido}.`;
         go('esperando');
       }
       break;
