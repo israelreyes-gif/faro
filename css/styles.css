@@ -146,9 +146,8 @@ html, body{
 /* apagado */
 #screen-apagado{ align-items:center; justify-content:flex-start; padding-top:calc(env(safe-area-inset-top) + 150px); }
 #screen-apagado > *:not(.bg-video-wrap):not(.back-fab){ position:relative; z-index:2; }
-#screen-apagado .status-line{ margin-top:10px; font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:#c9ccd0; text-shadow:0 0 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.8), 0 0 16px rgba(0,0,0,.6); }
-#screen-apagado .sub{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--ink-dim); text-align:center; font-size:15px; margin-top:10px; line-height:1.5; padding:0 40px; text-shadow:0 0 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.8), 0 0 16px rgba(0,0,0,.6); }
-#screen-apagado .apagada-tag{ margin-top:auto; margin-bottom:120px; font-family:'Cormorant Garamond', serif; font-weight:600; font-size:26px; color:#f2f0ea; text-shadow:0 0 4px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.85), 0 0 20px rgba(0,0,0,.65); }
+#screen-apagado .status-line{ margin-top:10px; font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:#e2e4e6; text-shadow:0 0 3px rgba(0,0,0,.9), 0 0 8px rgba(0,0,0,.8), 0 0 16px rgba(0,0,0,.6); }
+#screen-apagado .apagada-tag{ margin-top:auto; margin-bottom:120px; font-family:'Cormorant Garamond', serif; font-weight:600; font-size:30px; color:#f2f0ea; text-shadow:0 0 4px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.85), 0 0 20px rgba(0,0,0,.65); }
 #screen-apagado .wordmark{ text-shadow:0 0 4px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.85), 0 0 20px rgba(0,0,0,.65); }
 #screen-apagado .bell-row{ margin:0 20px 40px; border:1px solid rgba(255,255,255,.15); border-radius:40px; padding:14px 18px; display:flex; align-items:center; gap:14px; color:var(--ink-dim); font-size:11px; letter-spacing:.08em; text-transform:uppercase; background:rgba(0,0,0,.3); }
 
