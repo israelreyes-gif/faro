@@ -17,6 +17,17 @@ export function go(nombre) {
   SCREENS.forEach(s => document.getElementById(`screen-${s}`)?.classList.remove('active'));
   document.getElementById(`screen-${nombre}`)?.classList.add('active');
   gestionarVideoIntro(nombre);
+  animarTarjeta(nombre);
+}
+
+function animarTarjeta(nombre) {
+  const screen = document.getElementById(`screen-${nombre}`);
+  const card = screen?.querySelector('.card');
+  if (!card) return;
+
+  card.classList.remove('entrando');
+  void card.offsetWidth; // fuerza el reflow para poder repetir la animación
+  card.classList.add('entrando');
 }
 
 function gestionarVideoIntro(nombre) {
