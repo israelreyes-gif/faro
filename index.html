@@ -156,11 +156,10 @@
   <!-- APAGADO -->
   <section class="screen" id="screen-apagado">
     <div class="bg-video-wrap">
-      <video id="bg-video-apagado" autoplay loop muted playsinline></video>
+      <video id="bg-video-apagado" autoplay loop muted playsinline preload="auto" src="./video/dia.mp4"></video>
       <div class="bg-video-overlay"></div>
     </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
-    <div class="estado-tag" id="estado-tag-apagado"><span class="estado-icon">🌅</span><span>El faro descansa</span></div>
     <div class="wordmark" style="font-size:16px; margin-top:16px;">FARO</div>
     <div class="status-line">El faro está apagado</div>
     <div class="sub">Cada noche a las 22:00,<br>el faro se enciende.</div>
@@ -171,12 +170,11 @@
   <!-- DADO -->
   <section class="screen" id="screen-dado">
     <div class="bg-video-wrap">
-      <video id="bg-video-dado" autoplay loop muted playsinline></video>
+      <video id="bg-video-dado" autoplay loop muted playsinline preload="auto" src="./video/buscando.mp4"></video>
       <div class="bg-video-overlay"></div>
     </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
     <div class="confetti-wrap" id="confetti-wrap"></div>
-    <div class="estado-tag" id="estado-tag-dado"><span class="estado-icon">🔦</span><span>El faro está buscando…</span></div>
     <div class="dado-label" id="dado-label">El faro está eligiendo a alguien esta noche.</div>
     <div class="die" id="die">?</div>
     <div class="result-name" id="dado-result" style="display:none;"></div>
@@ -190,7 +188,6 @@
       <div class="bg-video-overlay"></div>
     </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
-    <div class="estado-tag"><span class="estado-icon">🕯️</span><span>El faro sigue encendido</span></div>
     <div class="wordmark" style="font-size:15px; text-align:left; padding-left:24px; padding-top:24px;">FARO</div>
     <div class="card" style="margin:70px 24px 0;">
       <div class="card-title" id="esperando-title">Esta noche, el faro ha iluminado a alguien.</div>
@@ -206,7 +203,6 @@
       <div class="bg-video-overlay"></div>
     </div>
     <button class="back-fab" data-back="logout" title="Cerrar sesión">⏻</button>
-    <div class="estado-tag"><span class="estado-icon">🕯️</span><span>El faro sigue encendido</span></div>
     <div class="wordmark" style="font-size:15px; text-align:left;">FARO</div>
     <div class="card">
       <div class="card-title">Esta noche, el faro te ha iluminado.</div>
