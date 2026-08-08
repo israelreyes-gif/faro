@@ -106,7 +106,10 @@ html, body{
 
 /* landing */
 #screen-landing{ justify-content:center; align-items:center; padding:0 34px; }
-#screen-landing .lh-wrap{ margin-bottom:14px; }
+.landing-video-wrap{
+  width:100%; height:220px; border-radius:12px; overflow:hidden; margin-bottom:22px; background:#000;
+}
+.landing-video-wrap video{ width:100%; height:100%; object-fit:cover; display:block; }
 #screen-landing .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--ink-dim); font-size:14px; text-align:center; margin:10px 0 46px; }
 #screen-landing .menu{ width:100%; display:flex; flex-direction:column; gap:12px; }
 
