@@ -1,4 +1,5 @@
 import { api } from './api.js';
+import { mostrarToast } from './toast.js';
 
 let categoriaActual = 'historia';
 let temporizador = null;
@@ -48,22 +49,19 @@ function textoRestante(segundos) {
 
 async function enviarMensaje() {
   const texto = document.getElementById('write-text').value.trim();
-  const errorEl = document.getElementById('write-error');
-  errorEl.style.display = 'none';
 
   if (!texto) {
-    errorEl.textContent = 'Escribe algo antes de encender el faro.';
-    errorEl.style.display = 'block';
+    mostrarToast('error', 'Escribe algo', 'No puedes encender el faro sin dejar un mensaje.');
     return;
   }
 
   try {
     clearInterval(temporizador);
     await api.enviarMensaje({ categoria: categoriaActual, texto });
+    mostrarToast('success', 'El faro se ha encendido', 'Tu mensaje ya está en camino.');
     document.dispatchEvent(new CustomEvent('faro:mensaje-enviado'));
   } catch (err) {
-    errorEl.textContent = err.message || 'No se pudo enviar el mensaje.';
-    errorEl.style.display = 'block';
+    mostrarToast('error', 'No se pudo enviar el mensaje', err.message || 'Inténtalo de nuevo en unos segundos.');
   }
 }
 
