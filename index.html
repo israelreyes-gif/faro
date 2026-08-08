@@ -15,6 +15,8 @@
 
 <div class="app">
 
+  <div class="toast-wrap" id="toast-wrap"></div>
+
   <!-- LANDING -->
   <section class="screen active" id="screen-landing">
     <div class="landing-video-wrap">
@@ -43,7 +45,6 @@
       <div class="field"><label>Usuario</label><input id="login-user" autocomplete="username"></div>
       <div class="field"><label>Contraseña</label><input id="login-pass" type="password" autocomplete="current-password"></div>
       <button class="btn primary" id="login-submit">Entrar al faro</button>
-      <div class="error-msg" id="login-error" style="display:none;"></div>
     </div>
   </section>
 
@@ -59,8 +60,6 @@
       <div class="field"><label>Nombre y apellidos</label><input id="reg-name"></div>
       <div class="field"><label>Fecha de nacimiento</label><input id="reg-birthdate" type="date"></div>
       <button class="btn primary" id="register-submit">Crear cuenta</button>
-      <div class="error-msg" id="register-error" style="display:none;"></div>
-      <div class="success-msg" id="register-success" style="display:none;"></div>
     </div>
   </section>
 
@@ -209,7 +208,6 @@
       <textarea id="write-text" placeholder="Escribe aquí lo que quieras dejar esta noche..."></textarea>
     </div>
     <button class="btn primary" id="write-submit">Encender el faro</button>
-    <div class="error-msg" id="write-error" style="display:none;"></div>
   </section>
 
   <!-- SIN MENSAJE -->
