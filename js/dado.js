@@ -20,16 +20,17 @@ export function mostrarResultado({ esGanador, numero }) {
   const result = document.getElementById('dado-result');
   const sub = document.getElementById('dado-sub');
 
-  die.textContent = numero;
   die.classList.add('settled');
 
   if (esGanador) {
+    die.textContent = numero;
     result.textContent = '¡El faro te ha iluminado a ti!';
     result.classList.remove('no-agraciado');
     sub.style.display = 'none';
     lanzarConfeti();
   } else {
-    result.textContent = `El faro ha iluminado al número ${numero}`;
+    die.textContent = '🔒';
+    result.textContent = 'El faro ha elegido a alguien esta noche.';
     result.classList.add('no-agraciado');
     sub.textContent = 'Tú, esta noche, solo puedes esperar a que escriba.';
     sub.style.display = 'block';
